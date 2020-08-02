@@ -3,18 +3,32 @@ package com.propertyspeaks.app.data;
 import java.util.HashMap;
 import java.util.Map;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
+
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class AttributesDTO {
 
+	@JsonProperty("street_num ")
 	private String streetNum;
+	@JsonProperty("street_dir ")
 	private String streetDir;
+	@JsonProperty("street_name")
 	private String streetName;
+	@JsonProperty("street_type ")
 	private String streetType;
+	@JsonProperty("description")
 	private String description;
+	@JsonProperty("status")
 	private String status;
-	private Integer dateStatus;
+	@JsonProperty("date)status")
+	private String dateStatus;
+	@JsonProperty("parcel)id")
 	private String parcelId;
+	@JsonProperty("oid")
 	private Integer oid;
-	private Map<String, Object> additionalProperties = new HashMap<String, Object>();
+	
 
 	public String getStreetNum() {
 	return streetNum;
@@ -64,11 +78,11 @@ public class AttributesDTO {
 	this.status = status;
 	}
 
-	public Integer getDateStatus() {
+	public String getDateStatus() {
 	return dateStatus;
 	}
 
-	public void setDateStatus(Integer dateStatus) {
+	public void setDateStatus(String dateStatus) {
 	this.dateStatus = dateStatus;
 	}
 
@@ -88,19 +102,13 @@ public class AttributesDTO {
 	this.oid = oid;
 	}
 
-	public Map<String, Object> getAdditionalProperties() {
-	return this.additionalProperties;
-	}
-
-	public void setAdditionalProperty(String name, Object value) {
-	this.additionalProperties.put(name, value);
-	}
+	
 
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((additionalProperties == null) ? 0 : additionalProperties.hashCode());
+	
 		result = prime * result + ((dateStatus == null) ? 0 : dateStatus.hashCode());
 		result = prime * result + ((description == null) ? 0 : description.hashCode());
 		result = prime * result + ((oid == null) ? 0 : oid.hashCode());
@@ -115,13 +123,7 @@ public class AttributesDTO {
 	
 	
 
-	@Override
-	public String toString() {
-		return "AttributesDTO [streetNum=" + streetNum + ", streetDir=" + streetDir + ", streetName=" + streetName
-				+ ", streetType=" + streetType + ", description=" + description + ", status=" + status + ", dateStatus="
-				+ dateStatus + ", parcelId=" + parcelId + ", oid=" + oid + ", additionalProperties="
-				+ additionalProperties + "]";
-	}
+	
 
 	@Override
 	public boolean equals(Object obj) {
@@ -132,11 +134,7 @@ public class AttributesDTO {
 		if (getClass() != obj.getClass())
 			return false;
 		AttributesDTO other = (AttributesDTO) obj;
-		if (additionalProperties == null) {
-			if (other.additionalProperties != null)
-				return false;
-		} else if (!additionalProperties.equals(other.additionalProperties))
-			return false;
+		
 		if (dateStatus == null) {
 			if (other.dateStatus != null)
 				return false;
@@ -183,6 +181,13 @@ public class AttributesDTO {
 		} else if (!streetType.equals(other.streetType))
 			return false;
 		return true;
+	}
+
+	@Override
+	public String toString() {
+		return "AttributesDTO [streetNum=" + streetNum + ", streetDir=" + streetDir + ", streetName=" + streetName
+				+ ", streetType=" + streetType + ", description=" + description + ", status=" + status + ", dateStatus="
+				+ dateStatus + ", parcelId=" + parcelId + ", oid=" + oid + "]";
 	}
 	
 	

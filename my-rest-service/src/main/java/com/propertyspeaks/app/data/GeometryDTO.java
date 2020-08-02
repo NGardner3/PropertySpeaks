@@ -3,6 +3,10 @@ package com.propertyspeaks.app.data;
 import java.util.HashMap;
 import java.util.Map;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class GeometryDTO {
 	private Double x;
 	private Double y;

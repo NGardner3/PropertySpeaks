@@ -6,12 +6,23 @@ import java.util.Map;
 
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 public class FeatureDTO {
 	
 	private AttributesDTO attributes;
 	private GeometryDTO geometry;
-	private Map<String, Object> additionalProperties = new HashMap<String, Object>();
+	
 
+	public FeatureDTO() {}
+	
+    public FeatureDTO(
+			@JsonProperty("attributes") AttributesDTO attributes, @JsonProperty("geometry")GeometryDTO geometry) {
+		this.attributes = attributes;
+		this.geometry = geometry;
+	}
+	
+	
 	public AttributesDTO getAttributes() {
 	return attributes;
 	}
@@ -28,24 +39,17 @@ public class FeatureDTO {
 	this.geometry = geometry;
 	}
 
-	public Map<String, Object> getAdditionalProperties() {
-	return this.additionalProperties;
-	}
 
-	public void setAdditionalProperty(String name, Object value) {
-	this.additionalProperties.put(name, value);
-	}
 
 	@Override
 	public String toString() {
-	return new ToStringBuilder(this).append("attributes", attributes).append("geometry", geometry).append("additionalProperties", additionalProperties).toString();
+	return new ToStringBuilder(this).append("attributes", attributes).append("geometry", geometry).toString();
 	}
 
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((additionalProperties == null) ? 0 : additionalProperties.hashCode());
 		result = prime * result + ((attributes == null) ? 0 : attributes.hashCode());
 		result = prime * result + ((geometry == null) ? 0 : geometry.hashCode());
 		return result;
@@ -60,11 +64,6 @@ public class FeatureDTO {
 		if (getClass() != obj.getClass())
 			return false;
 		FeatureDTO other = (FeatureDTO) obj;
-		if (additionalProperties == null) {
-			if (other.additionalProperties != null)
-				return false;
-		} else if (!additionalProperties.equals(other.additionalProperties))
-			return false;
 		if (attributes == null) {
 			if (other.attributes != null)
 				return false;

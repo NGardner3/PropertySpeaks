@@ -2,6 +2,7 @@ package com.propertyspeaks.app.data;
 
 
 import java.io.Serializable;
+import java.util.Collection;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
@@ -29,16 +30,16 @@ public class RestClientService implements Serializable {
 	 *
 	 * Useful when the response data has a known structure.
 	 */
-	public List<RestResponse> getAllRecords() {
+	public Collection<AttributesDTO> getAllRecords() {
 
 		System.out.println("Fetching all Comment objects through REST..");
 
 		// Fetch from 3rd party API; configure fetch
 		final RequestHeadersSpec<?> spec = WebClient.create().get()
-				.uri("https://gis.detroitmi.gov/arcgis/rest/services/OpenData/CertificateOfOccupancy/FeatureServer/0/query?where=1%3D1&outFields=street_num,street_dir,street_name,street_type,description,status,date_status,parcel_id,oid&outSR=4326&f=json");
+				.uri("https://gis.detroitmi.gov/arcgis/rest/services/OpenData/CertificateOfCompliance/FeatureServer/0/query?where=1%3D1&outFields=*&outSR=4326&f=json");
 
 		// do fetch and map result
-		final List<RestResponse> records = spec.retrieve().toEntityList(RestResponse.class).block().getBody();
+		final List<AttributesDTO> records = spec.retrieve().toEntityList(AttributesDTO.class).block().getBody();
 
 		System.out.println(String.format("...received %d items.", records.size()));
 
@@ -50,7 +51,7 @@ public class RestClientService implements Serializable {
 		System.out.println("Fetching all Post objects through REST..");
 
 		// Fetch from 3rd party API; configure fetch
-		final RequestHeadersSpec<?> spec = WebClient.create().get().uri("https://opendata.arcgis.com/datasets/bcbfa1408b4f4465bac2b45af58ec583_0.geojson");
+		final RequestHeadersSpec<?> spec = WebClient.create().get().uri("https://gis.detroitmi.gov/arcgis/rest/services/OpenData/CertificateOfCompliance/FeatureServer/0/query?where=1%3D1&outFields=*&outSR=4326&f=json");
 
 		// do fetch and map result
 		final List<JsonNode> posts = spec.retrieve().toEntityList(JsonNode.class).block().getBody();

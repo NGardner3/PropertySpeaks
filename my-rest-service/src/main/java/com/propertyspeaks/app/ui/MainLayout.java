@@ -21,13 +21,16 @@ public class MainLayout extends AppLayout implements AfterNavigationObserver  {
 	private final H1 pageTitle;
 	private final RouterLink home;
 	private final RouterLink inMemoryDTO;
+	private final RouterLink inMemoryJSON;
     
 	public MainLayout() {
     	// Navigation
 		home = new RouterLink("Home", HomeView.class);
 		inMemoryDTO = new RouterLink("In-Memory DTO", InMemoryDTOView.class);
+		inMemoryJSON = new RouterLink("In-Memory JSON", InMemoryJSONView.class);
+		
      
-		final UnorderedList list = new UnorderedList(new ListItem(home), new ListItem(inMemoryDTO));
+		final UnorderedList list = new UnorderedList(new ListItem(home), new ListItem(inMemoryDTO), new ListItem(inMemoryJSON));
 		final Nav navigation = new Nav(list);
 		addToDrawer(navigation);
 		setPrimarySection(Section.DRAWER);
@@ -38,8 +41,9 @@ public class MainLayout extends AppLayout implements AfterNavigationObserver  {
 		final Header header = new Header(new DrawerToggle(), pageTitle);
 		addToNavbar(header);
 	}
+	
 	private RouterLink[] getRouterLinks() {
-		return new RouterLink[] { home, inMemoryDTO };
+		return new RouterLink[] { home, inMemoryDTO , inMemoryJSON};
 	}
 
 	@Override

@@ -4,7 +4,10 @@ package com.propertyspeaks.app.data;
 import java.util.HashMap;
 import java.util.Map;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
+
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class SpatialReferenceDTO {
 	private Integer wkid;
 	private Integer latestWkid;

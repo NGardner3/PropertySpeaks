@@ -1,20 +1,29 @@
 package com.propertyspeaks.app.data;
 
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
+
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class GlobalFieldDTO {
 
 	private String objectIdFieldName;
 	private String globalIdFieldName;
 	private String geometryType;
 	private SpatialReferenceDTO spatialReference;
-	private List<FeatureDTO> features = null;
-	private Map<String, Object> additionalProperties = new HashMap<String, Object>();
+	private  FeatureDTO features [];
+	
 
+	public GlobalFieldDTO(@JsonProperty("features") FeatureDTO features[]) {
+		this.features = features;
+	}
 	public String getObjectIdFieldName() {
 	return objectIdFieldName;
 	}
@@ -47,32 +56,27 @@ public class GlobalFieldDTO {
 	this.spatialReference = spatialReference;
 	}
 
-	public List<FeatureDTO> getFeatures() {
+	public FeatureDTO[] getFeatures() {
 	return features;
 	}
 
-	public void setFeatures(List<FeatureDTO> features) {
+	public void setFeatures(FeatureDTO[] features) {
 	this.features = features;
 	}
 
-	public Map<String, Object> getAdditionalProperties() {
-	return this.additionalProperties;
-	}
-
-	public void setAdditionalProperty(String name, Object value) {
-	this.additionalProperties.put(name, value);
-	}
+	
 
 	@Override
 	public String toString() {
-	return new ToStringBuilder(this).append("objectIdFieldName", objectIdFieldName).append("globalIdFieldName", globalIdFieldName).append("geometryType", geometryType).append("spatialReference", spatialReference).append("features", features).append("additionalProperties", additionalProperties).toString();
+		return "GlobalFieldDTO [objectIdFieldName=" + objectIdFieldName + ", globalIdFieldName=" + globalIdFieldName
+				+ ", geometryType=" + geometryType + ", spatialReference=" + spatialReference + ", features="
+				+ Arrays.toString(features) + "]";
 	}
-
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((additionalProperties == null) ? 0 : additionalProperties.hashCode());
+		
 		result = prime * result + ((geometryType == null) ? 0 : geometryType.hashCode());
 		result = prime * result + ((globalIdFieldName == null) ? 0 : globalIdFieldName.hashCode());
 		result = prime * result + ((objectIdFieldName == null) ? 0 : objectIdFieldName.hashCode());
@@ -89,11 +93,7 @@ public class GlobalFieldDTO {
 		if (getClass() != obj.getClass())
 			return false;
 		GlobalFieldDTO other = (GlobalFieldDTO) obj;
-		if (additionalProperties == null) {
-			if (other.additionalProperties != null)
-				return false;
-		} else if (!additionalProperties.equals(other.additionalProperties))
-			return false;
+
 		if (geometryType == null) {
 			if (other.geometryType != null)
 				return false;
