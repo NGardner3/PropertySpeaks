@@ -1,50 +1,21 @@
 package com.propertyspeaks.app.data;
 
-import java.util.HashMap;
-import java.util.Map;
 
 
-import org.apache.commons.lang3.builder.ToStringBuilder;
-
-import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class FeatureDTO {
 	
-	private AttributesDTO attributes;
+	private Attributes attributes;
 	private GeometryDTO geometry;
 	
 
-	public FeatureDTO() {}
-	
-    public FeatureDTO(
-			@JsonProperty("attributes") AttributesDTO attributes, @JsonProperty("geometry")GeometryDTO geometry) {
+	public FeatureDTO(Attributes attributes ,GeometryDTO geometry) {
 		this.attributes = attributes;
 		this.geometry = geometry;
 	}
 	
+ 
 	
-	public AttributesDTO getAttributes() {
-	return attributes;
-	}
-
-	public void setAttributes(AttributesDTO attributes) {
-	this.attributes = attributes;
-	}
-
-	public GeometryDTO getGeometry() {
-	return geometry;
-	}
-
-	public void setGeometry(GeometryDTO geometry) {
-	this.geometry = geometry;
-	}
-
-
-
-	@Override
-	public String toString() {
-	return new ToStringBuilder(this).append("attributes", attributes).append("geometry", geometry).toString();
-	}
 
 	@Override
 	public int hashCode() {

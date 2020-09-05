@@ -18,24 +18,25 @@ import com.vaadin.flow.router.Route;
 public class InMemoryJSONView extends Main {
 
 	public InMemoryJSONView(@Autowired RestClientService service) {
-		// The second example does not use a DTO, but raw JSON instead using the Jackson
-		// library included with Spring. The data is a List of JSON nodes; for each
-		// column, we define how to get the correct data from the node.
-
-		// This is useful when the REST API returns dynamic data
-		final Grid<JsonNode> postsGrid = new Grid<JsonNode>();
-
-		postsGrid.addColumn(node -> node.get("street_num")).setHeader("Street Number").setTextAlign(ColumnTextAlign.END);
-		postsGrid.addColumn(node -> node.get("street_name")).setHeader("Street Address");
-		postsGrid.addColumn(node -> node.get("status")).setHeader("Compliance Status");
-
-		// Fetch all data and show
-		final Button fetchPosts = new Button("Fetch all compliance status records", e -> postsGrid.setItems(service.getAllPosts()));
-
-		fetchPosts.addThemeVariants(ButtonVariant.LUMO_PRIMARY);
-
-		add(fetchPosts, postsGrid);
-
-	}
+//		// The second example does not use a DTO, but raw JSON instead using the Jackson
+//		// library included with Spring. The data is a List of JSON nodes; for each
+//		// column, we define how to get the correct data from the node.
+//
+//		// This is useful when the REST API returns dynamic data
+//		final Grid<JsonNode> postsGrid = new Grid<JsonNode>();
+//
+//		postsGrid.addColumn(node -> node.get("street_num")).setHeader("Street Number").setTextAlign(ColumnTextAlign.END);
+//		postsGrid.addColumn(node -> node.get("street_name")).setHeader("Street Address");
+//		postsGrid.addColumn(node -> node.get("status")).setHeader("Compliance Status");
+//
+//		// Fetch all data and show
+//		final Button fetchPosts = new Button("Fetch all compliance status records", e -> postsGrid.setItems(service.getAllPosts()));
+//
+//		fetchPosts.addThemeVariants(ButtonVariant.LUMO_PRIMARY);
+//
+//		add(fetchPosts, postsGrid);
+//
+//	}
 }
 
+}

@@ -13,6 +13,12 @@ public class SpatialReferenceDTO {
 	private Integer latestWkid;
 	private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
+	
+	
+	public SpatialReferenceDTO() {
+	
+	}
+
 	public Integer getWkid() {
 	return wkid;
 	}

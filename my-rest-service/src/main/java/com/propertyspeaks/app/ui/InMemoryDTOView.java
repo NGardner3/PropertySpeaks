@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.propertyspeaks.app.data.AttributesDTO;
+import com.propertyspeaks.app.data.Attributes;
 import com.propertyspeaks.app.data.GlobalFieldDTO;
 import com.propertyspeaks.app.data.RestClientService;
 import com.propertyspeaks.app.data.RestResponse;
@@ -29,14 +29,14 @@ public class InMemoryDTOView extends Main {
 	public InMemoryDTOView(@Autowired RestClientService service) {
 		// First example uses a Data Transfer Object (DTO) class that we've created. The
 		// Vaadin Grid works well with entity classes, so this is quite straightforward:
-		final Grid<AttributesDTO> attributesGrid = new Grid<AttributesDTO>(AttributesDTO.class);
+		final Grid<Attributes> attributesGrid = new Grid<Attributes>(Attributes.class);
 
 		// Fetch all entities and show
-		final Button fetchPropertyRecords = new Button("Fetch all property attributes",
-				e -> attributesGrid.setItems(service.getAllRecords()));
-		 fetchPropertyRecords.addThemeVariants(ButtonVariant.LUMO_PRIMARY);
-
-		add( fetchPropertyRecords , attributesGrid);
+//		final Button fetchPropertyRecords = new Button("Fetch all property attributes",
+//				//e -> attributesGrid.setItems(service.getAllRecords()));
+//		 fetchPropertyRecords.addThemeVariants(ButtonVariant.LUMO_PRIMARY);
+//
+//		add( fetchPropertyRecords , attributesGrid);
 
 	}
 
