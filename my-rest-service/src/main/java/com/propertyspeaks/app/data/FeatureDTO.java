@@ -1,17 +1,16 @@
 package com.propertyspeaks.app.data;
 
-
-
+import java.util.Optional;
 
 public class FeatureDTO {
 	
 	private Attributes attributes;
-	private GeometryDTO geometry;
+	private Optional<GeometryDTO> geometry;
 	
 
-	public FeatureDTO(Attributes attributes ,GeometryDTO geometry) {
+	public FeatureDTO(Attributes attributes ,Optional<GeometryDTO> geometry2) {
 		this.attributes = attributes;
-		this.geometry = geometry;
+		this.geometry = geometry2;
 	}
 	
  

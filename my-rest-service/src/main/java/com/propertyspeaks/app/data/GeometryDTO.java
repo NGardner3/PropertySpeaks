@@ -2,10 +2,11 @@ package com.propertyspeaks.app.data;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Optional;
 
 
 public class GeometryDTO {
-	private Number x;
+	private int x;
 	private Number y;
 	
 	
@@ -15,13 +16,13 @@ public class GeometryDTO {
 		
 	}
 	
-	public Number getX() {
+	public int getX() {
 	return x;
 	}
 
 	
 
-	public void setX(Number x) {
+	public void setX(int x) {
 	this.x =  x;
 	}
 
